@@ -9,7 +9,7 @@ import MyModels
 from sklearn import metrics
 
 status = 'emci'
-#train_los=[]
+
 for ROInum in ([500]):
     qual_all = []
     for cv in ([1,2,3,4,5]):
@@ -49,15 +49,8 @@ for ROInum in ([500]):
 
         while not qualified:
             model = MyModels.MAHGCNNET(ROInum = ROInum,layer=int(ROInum/100))
-            optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-2)
+            optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-1)
             model.cuda()
-            
-            test_auc = []
-            
-            test_los = []
-            train_auc = []
-            sen = []
-            spe = []
             
             for epoch in range(EPOCH):
                 for step, (b_x, b_y) in enumerate(train_loader):  # gives batch data
@@ -100,12 +93,12 @@ for ROInum in ([500]):
                     A5 = torch.tensor(A5, dtype=torch.float32)
                     A5.cuda()
                     
-                    output = model(A1, A2, A3, A4, A5)  # rnn output
+                    output = model(A1, A2, A3, A4, A5) 
 
-                    loss = loss_func(output, b_y)  # cross entropy loss
-                    optimizer.zero_grad()  # clear gradients for this training step
-                    loss.backward()  # backpropagation, compute gradients
-                    optimizer.step()  # apply gradients
+                    loss = loss_func(output, b_y)  
+                    optimizer.zero_grad()  
+                    loss.backward()  
+                    optimizer.step()  
 
                     predicted = torch.max(output.data, 1)[1]
                     correct = (predicted == b_y).sum()
@@ -117,9 +110,7 @@ for ROInum in ([500]):
                     print('|train diag loss:', loss.data.item(), '|train accuracy:', accuracy
                           )
 
-                    if epoch>=30 and accuracy>=0.85:
-                        #lr = 0.001
-                        #optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-2)
+                    if epoch>=30 and accuracy>=0.85: #convergence
                         predicted_all = []
                         test_y_all = []
                         model.eval()
