@@ -65,7 +65,6 @@ for ROInum in ([500]):
                     b_y = b_y.view(-1)
                     b_y = b_y.long()
                     
-                    
                     b_y = b_y.cuda()
                     temp = b_x.numpy().tolist()
                     batch_size=b_x.shape[0]
@@ -101,15 +100,7 @@ for ROInum in ([500]):
                     A5 = torch.tensor(A5, dtype=torch.float32)
                     A5.cuda()
                     
-                    
-
                     output = model(A1, A2, A3, A4, A5)  # rnn output
-
-                    
-                    
-                    
-                    
-                    
 
                     loss = loss_func(output, b_y)  # cross entropy loss
                     optimizer.zero_grad()  # clear gradients for this training step
@@ -120,7 +111,6 @@ for ROInum in ([500]):
                     correct = (predicted == b_y).sum()
                     accuracy = float(correct) / float(b_x.shape[0])
                     train_auc = accuracy
-                    
                     
                     print('[Epoch %d, Batch %5d] loss: %.3f' %
                           (epoch + 1, step + 1, loss))
@@ -199,13 +189,7 @@ for ROInum in ([500]):
                               '|test spe:', spec,
                               '|test auc:', auc,
                               )
-                        
-                        
 
-                        
-                        
-                        
-                        
                         if best < auc and sens>0.70 and spec>0.70:
                             best = auc
                             qualified.append([accuracy, sens, spec, auc])
