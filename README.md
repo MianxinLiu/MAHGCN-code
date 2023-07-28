@@ -1,4 +1,4 @@
-# MAHGCN-code
+# Hierarchical Graph Convolutional Network Built by Multiscale Atlases for Brain Disorder Diagnosis Using Functional Connectivity
 Codes for "Hierarchical Graph Convolutional Network Built by Multiscale Atlases for Brain Disorder Diagnosis Using Functional Connectivity"
 
 Associated papers
