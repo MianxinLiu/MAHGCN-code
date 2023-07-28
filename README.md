@@ -2,6 +2,7 @@
 Codes for "Hierarchical Graph Convolutional Network Built by Multiscale Atlases for Brain Disorder Diagnosis Using Functional Connectivity"
 
 Associated papers
+
 Liu, M., Wang, Y., Zhang, H., Yang, Q., Shi, F., Zhou, Y., & Shen, D. (2022). Multiscale functional connectome abnormality predicts cognitive outcomes in subcortical ischemic vascular disease. Cerebral Cortex, 32(21), 4641-4656.
 
 Liu, M., Zhang, H., Shi, F., & Shen, D. (2023). Hierarchical Graph Convolutional Network Built by Multiscale Atlases for Brain Disorder Diagnosis Using Functional Connectivity. IEEE Transactions on Neural Networks and Learning Systems.
