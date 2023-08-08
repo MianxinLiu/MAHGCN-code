@@ -311,7 +311,7 @@ class GraphSAG(nn.Module):
         for i in range(self.l_n):
             #self.down_gcns.append(GCN(dim, dim, act, drop_p))
             #self.up_gcns.append(GCN(dim, dim, act, drop_p))
-            self.pools.append(Pool(ks[i], dim, drop_p))
+            self.pools.append(SAGPool(ks[i], dim, drop_p))
             #self.unpools.append(Unpool(dim, dim, drop_p))
 
         self.down_gcns.append(GCN(400, 1, act, drop_p))
@@ -357,12 +357,13 @@ class SAGPool(nn.Module):
         super(SAGPool, self).__init__()
         self.k = k
         self.sigmoid = nn.Sigmoid()
-        self.proj = GCN(self.in_dim, 1, nn.ReLU())
+        self.in_dim = in_dim
+        self.proj = GCN(self.in_dim, 1, nn.ReLU(), p)
         self.drop = nn.Dropout(p=p) if p > 0 else nn.Identity()
 
     def forward(self, g, h):
         Z = self.drop(h)
-        weights = self.proj(Z).squeeze()
+        weights = self.proj(g, Z).squeeze()
         scores = self.sigmoid(weights)
         return top_k_graph(scores, g, h, self.k)
 
