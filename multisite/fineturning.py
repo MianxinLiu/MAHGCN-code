@@ -119,7 +119,7 @@ for pretrain in [True,False]:
                 if pretrain:
                     print('Load pretrained')
                     lr = 0.001
-                    pretrained_dict = torch.load(workpath + '/model/model' + str(neg) + 'vs' + str(pos) + '_magcn_Combat_pretrain'+str(source)+'.pth')
+                    pretrained_dict = torch.load(workpath + '/model/model' + str(neg) + 'vs' + str(pos) + '_mahgcn_Combat_pretrain'+str(source)+'.pth')
                     model_dict = model.state_dict()
                     pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
                     model_dict.update(pretrained_dict)
