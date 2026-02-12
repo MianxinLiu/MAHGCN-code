@@ -3,14 +3,9 @@ import torch
 import torch.nn as nn
 import scipy.io as scio
 
-from torch.autograd import Variable
-from torch.nn.parameter import Parameter
-from Modules import FilterLinear
-import math
 import numpy as np
 import MAHGCN
 import torch
-from collections import OrderedDict
 
 gpu = 1
 

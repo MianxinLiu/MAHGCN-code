@@ -76,7 +76,7 @@ class AtlasMap(nn.Module):
         #h = torch.diag(h)
         #h = self.drop(h)
         h = h.T
-        filename = '/public/home/liumx1/matlab/scripts/adni data/data/interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '_b.mat'
+        filename = './interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '_b.mat'
         Map = scio.loadmat(filename)
         Map = Map['mapping']
         #Map[Map<0.50] =0
@@ -103,7 +103,7 @@ class AtlasMap_mean(nn.Module):
         #h = torch.diag(h)
         #h = self.drop(h)
         h = h.T
-        filename = '/media/user/4TB/matlab/scripts/adni data/data/interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '_b.mat'
+        filename = './interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '_b.mat'
         Map = scio.loadmat(filename)
         Map = Map['mapping']
         Map = torch.tensor(Map)
@@ -128,7 +128,7 @@ class AtlasMap_max(nn.Module):
         #h = self.drop(h)
         h = h.T
         dim=h.shape
-        filename = '/media/user/4TB/matlab/scripts/adni data/data/interlayermapping/mapping_' + str(self.indim) + 'to' + str(
+        filename = './interlayermapping/mapping_' + str(self.indim) + 'to' + str(
             self.outdim) + '_b.mat'
         Map = scio.loadmat(filename)
         Map = Map['mapping']
@@ -156,7 +156,7 @@ class AtlasMap_th(nn.Module):
         #h = torch.diag(h)
         #h = self.drop(h)
         h = h.T
-        filename = '/media/user/4TB/matlab/scripts/adni data/data/interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '.mat'
+        filename = './interlayermapping/mapping_'+str(self.indim) +'to' + str(self.outdim)+ '.mat'
         Map = scio.loadmat(filename)
         Map = Map['mapping']
         Map[Map<self.th] =0
