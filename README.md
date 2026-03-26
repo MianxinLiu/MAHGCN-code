@@ -9,4 +9,4 @@ Liu, M., Zhang, H., Shi, F., & Shen, D. (2023). Hierarchical Graph Convolutional
 
 Liu, M., Zhang, H., Shi, F., & Shen, D. (2021). Building dynamic hierarchical brain networks and capturing transient meta-states for early mild cognitive impairment diagnosis. In Medical Image Computing and Computer Assisted Intervention–MICCAI 2021
 
-****Note that**: The previously uploaded atlas mapping matrics were found to be generated with linear interpolation, as a result of usage of Matlab version "imresizen". We now provide a python implementation of the atlas mapping estimation and suggest a nearest neighbor-based interpolation.  
+****Note that**: The previously uploaded atlas mapping matrics are confirmed to be generated with linear interpolation, as a result of usage of Matlab version image resize "imresizen". We now provide a python implementation of the atlas mapping estimation and suggest a nearest neighbor-based interpolation.  
